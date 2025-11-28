@@ -57,6 +57,11 @@ npm install motion
 
 ### Entendiendo los Ejes (X, Y, Z)
 
+<div align="center">
+  <img src="./public/gif/thinking2-om-nom.gif" width="130" />
+</div>
+<br>
+
 **Para mover cosas, necesitas decirle hacia dónde ir. Imagina que estás sentado en tu escritorio:**
 
 **1. Eje X (Horizontal): Es como mover tu cabeza diciendo "No".**
