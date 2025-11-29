@@ -85,7 +85,7 @@ npm install motion
 # Animar textos y cards (ejemplos prácticos)
 
 <div align="center">
-  <img src="./public/gif/thinking-om-nom3.gif" width="130" />
+  <img src="./public/gif/thinking-om-nom3.gif" width="110" />
 </div>
 <br>
 
@@ -131,6 +131,33 @@ export default TarjetaMagica
 
 - Se puede usar igual para botones, imágenes, cards de testimonios, etc.​
 
+
+### Ejemplos Práctico #1 v2 XD
+
+**Piensa en una tarjeta de producto que “crece” un poco cuando pasas el mouse, como si respirara:**
+
+```jsx
+import { motion } from "motion/react";
+
+const CardHover = () => {
+    return (
+        <motion.div
+            className="bg-sky-700 w-39 h-50 flex justify-center items-center flex-col rounded-2xl"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(0,0,0,0.15)" }}
+            transition={{ duration: 0.4 }}
+        >
+            <h2>Producto</h2>
+            <p>Descripción breve.</p>
+        </motion.div>
+    )
+}
+
+export default CardHover
+```
+
+
 <br>
 
 
@@ -166,7 +193,7 @@ export default TextoH1
 
 ### Ejemplos Práctico #3
 
-**Texto que aparece palabra por palabra (Stagger).**
+**Texto que aparece letra por letra (Stagger).**
 **Este es un truco avanzado de "Variantes". Imagina un coreógrafo (el padre) que le dice a los bailarines (las letras): "Salgan ustedes, pero no todos a la vez, esperen 0.1 segundos entre cada uno".**
 
 ```jsx
@@ -207,6 +234,96 @@ const LetterforLetter = () => {
 
 export default LetterforLetter
 ```
+---
+
+<br>
+
+## Animar cuando la sección entra en pantalla (whileInView)
+
+<div align="center">
+  <img src="./public/gif/om-nom.gif" width="169" />
+</div>
+<br>
+
+**Te pregntaras cómo activar animaciones cuando estén en la sección. Para esto usamos `whileInView` (mientras está a la vista).​**
+
+**Imagina que es una luz automática de pasillo: solo se enciende cuando pasas por ahí.**
+
+```jsx
+'use client'
+import { motion } from "motion/react"
+
+const ScrollText = () => {
+    return (
+        <div>
+            <motion.div
+                initial={{ opacity: 0, x: -100 }} // Empieza invisible a la izquierda
+                whileInView={{ opacity: 1, x: 0 }} // Al verse, aparece y va al centro
+                transition={{ duration: 1 }}
+                viewport={{ once: false, amount: 0.5 }} // Configuración importante
+            >
+                <h2
+                    className="font-black text-3xl py-5"
+                >¡Aparecí al hacer scroll!</h2>
+            </motion.div>
+        </div>
+    )
+}
+
+export default ScrollText
+```
+> 'use client' ya que este es utilizado en nextjs y solo funciona del lado del cliente
+
+### ¿Cómo activarla más de una vez?
+
+**La clave está en la propiedad viewport:**
+
+- `viewport={{ once: true }}`: La animación ocurre una sola vez y se queda así (ideal para intros).
+
+- `viewport={{ once: false }}`: ¡Esto es lo que aplicamos! Si bajas y subes, y el elemento sale de la pantalla y vuelve a entrar, la animación se repetirá infinitamente cada vez que lo veas.
+
+## Ejemplo 2 mas simple y detallado
+
+**Para que un bloque se anime solo cuando el usuario hace scroll hasta él, usa initial + whileInView:**
+
+```jsx
+<motion.section
+  initial={{ opacity: 0, y: 50 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: false, amount: 0.3 }}
+  transition={{ duration: 0.6 }}
+>
+  <h2>Sección servicios</h2>
+</motion.section>
+```
+
+- `whileInView` se activa cuando la sección entra en el viewport.​
+
+- `viewport.once`: false permite que la animación se dispare cada vez que la sección entra de nuevo en pantalla; si fuera true, solo la verías la primera vez.​
+
+<div align="center">
+  <img src="./public/gif/walking-to-door-om-nom.gif" width="210" />
+</div>
+<br>
+
+**Piensa en una puerta automática de supermercado: si once: true, se abre solo la primera vez que entras; si once: false, se abre cada vez que alguien se acerca.**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 por definir: 4. Activar animaciones al hacer Scroll (La Sección) & 1. Animar cuando la sección entra en pantalla (whileInView)
