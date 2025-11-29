@@ -308,23 +308,4 @@ export default ScrollText
 
 **Piensa en una puerta automática de supermercado: si once: true, se abre solo la primera vez que entras; si once: false, se abre cada vez que alguien se acerca.**
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-por definir: 4. Activar animaciones al hacer Scroll (La Sección) & 1. Animar cuando la sección entra en pantalla (whileInView)
-
+**[Ir a leccion 2 (un poco mas avanzada)](./src/README.Md)**
