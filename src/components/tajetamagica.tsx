@@ -17,8 +17,8 @@ const TarjetaMagica = () => {
             // Estilos básicos (como CSS)
             style={{
                 width: 200,
-                height: 300,
-                backgroundColor: "blue",
+                height: 200,
+                backgroundColor: "red",
                 borderRadius: 20,
             }}
         />
